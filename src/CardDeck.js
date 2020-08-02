@@ -20,11 +20,20 @@ function CardDeck() {
     getDeck();
   }, [])
 
-  
+  async function getCard() {
+    try {
+      const resp = await axios.get(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`);
+      setCardsShown([...cardsShown, resp.data.cards[0]]);
+    }
+    catch(err) {
+      alert('Something went wrong')
+      throw new Error(err)
+    }
+  }
 
   return(
     <div className="CardDeck">
-      <button>GET A CARD</button>
+      <button onClick={getCard}>GET A CARD</button>
     </div>
   )
 }
