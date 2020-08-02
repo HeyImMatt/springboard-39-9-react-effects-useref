@@ -20,7 +20,7 @@ function CardDeck() {
     getDeck();
   }, [])
 
-  console.log(deckId)
+  
 
   return(
     <div className="CardDeck">
