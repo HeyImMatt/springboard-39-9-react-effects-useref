@@ -21,14 +21,16 @@ function CardDeck() {
   }, [])
 
   async function getCard() {
-    try {
-      const resp = await axios.get(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`);
-      setCardsShown([...cardsShown, resp.data.cards[0]]);
-    }
-    catch(err) {
-      alert('Something went wrong')
-      throw new Error(err)
-    }
+    if (cardsShown.length < 52) {
+      try {
+        const resp = await axios.get(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`);
+        setCardsShown([...cardsShown, resp.data.cards[0]]);
+      }
+      catch(err) {
+        alert('Something went wrong')
+        throw new Error(err)
+      }
+    } else alert('There are no cards left!')
   }
 
   return(
