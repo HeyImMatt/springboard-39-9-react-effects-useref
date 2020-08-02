@@ -1,8 +1,11 @@
 import React from 'react';
+import './CardDeck.css'
 
 function CardDeck() {
   return(
-    <div>Hello</div>
+    <div className="CardDeck">
+      <button>GET A CARD</button>
+    </div>
   )
 }
 
